@@ -5,11 +5,12 @@ import dotenv from "dotenv";
 
 import taskRoutes from "./routes/tasks.js";
 import userRoutes from "./routes/users.js";
+import expenseRoutes from "./routes/expense.js"
 
 dotenv.config();
 const app = express();
 
-const PORT = 4000;
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/tasks", taskRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/expenses", expenseRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server is running and listening on http://localhost:${PORT}`);
